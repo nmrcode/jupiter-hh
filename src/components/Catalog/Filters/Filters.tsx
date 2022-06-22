@@ -5,11 +5,11 @@ import Dropdown from "../../Shared/Dropdown/Dropdown";
 import { IFilter } from "../../../types/filter";
 
 const filterItems: IFilter[] = [
-  { id: 1, value: "Show All" },
-  { id: 2, value: "Design" },
-  { id: 3, value: "Branding" },
-  { id: 4, value: "Illustration" },
-  { id: 5, value: "Motion" },
+  { id: 1, text: "Show All", value: "SHOW_ALL" },
+  { id: 2, text: "Design", value: "DESIGN" },
+  { id: 3, text: "Branding", value: "BRANDING" },
+  { id: 4, text: "Illustration", value: "ILLUSTRATION" },
+  { id: 5, text: "Motion", value: "MOTION" },
 ];
 
 const Filters: FC = () => {
@@ -21,7 +21,7 @@ const Filters: FC = () => {
         <div className={s.wrapper}>
           {filterItems.map((filter) => (
             <button key={filter.id} className={s.button}>
-              {filter.value}
+              {filter.text}
             </button>
           ))}
         </div>

@@ -35,7 +35,7 @@ const Dropdown: FC<DropdownProps> = ({ data }) => {
               className={s.item}
               onClick={(e) => handleClickOnItem(item.id)}
             >
-              {item.value}
+              {item.text}
             </div>
           ))}
         </div>
