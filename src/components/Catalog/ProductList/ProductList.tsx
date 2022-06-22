@@ -12,7 +12,7 @@ const ProductList: FC<CardListProps> = ({ products }) => {
   return (
     <div className={s.wrapper}>
       {products.map((product) => (
-        <ProductItem product={product} />
+        <ProductItem key={product.title} product={product} />
       ))}
     </div>
   );

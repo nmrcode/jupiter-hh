@@ -10,8 +10,13 @@
   overflow: hidden;
   transition: transform .2s ease-in-out;
 
-  &:hover{
+  &:hover {
     transform: scale(1.05);
+  }
+
+  @media (max-width: 375px) {
+    margin: 0 auto;
+    width: 300px;
   }
 }
 

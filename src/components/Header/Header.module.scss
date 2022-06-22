@@ -12,6 +12,14 @@
   align-items: flex-end;
   justify-content: space-between;
   padding: 16px 0;
+
+  @media (max-width: 992px) {
+    padding: 9px 0;
+    justify-content: center;
+    button{
+      display: none;
+    }
+  }
 }
 
 .logo{
