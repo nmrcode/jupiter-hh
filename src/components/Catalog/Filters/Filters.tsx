@@ -5,6 +5,8 @@ import Dropdown from "../../Shared/Dropdown/Dropdown";
 import { IFilter } from "../../../types/filter";
 import { useAppDispatch } from "../../../hooks/useAppDispatch";
 import { filterProducts } from "../../../store/slices/productsSlice";
+import { useAppSelector } from "../../../hooks/useAppSelector";
+import cn from "classnames";
 
 const filterItems: IFilter[] = [
   { id: 1, text: "Show All" },
@@ -17,6 +19,7 @@ const filterItems: IFilter[] = [
 const Filters: FC = () => {
   const match = useMediaQuery("(max-width: 992px)");
   const dispatch = useAppDispatch();
+  const currentFilter = useAppSelector((state) => state.product.currentFilter);
 
   // Для выставления дефолтного фильтра
   useEffect(() => {
@@ -31,7 +34,10 @@ const Filters: FC = () => {
             <button
               onClick={() => dispatch(filterProducts(filter.text))}
               key={filter.id}
-              className={s.button}
+              className={cn(
+                s.button,
+                currentFilter === filter.text && s.active
+              )}
             >
               {filter.text}
             </button>

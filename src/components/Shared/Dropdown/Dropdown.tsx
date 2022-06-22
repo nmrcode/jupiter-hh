@@ -2,6 +2,8 @@ import { FC, useState } from "react";
 import { IFilter } from "../../../types/filter";
 import s from "./Dropdown.module.scss";
 import cn from "classnames";
+import { useAppDispatch } from "../../../hooks/useAppDispatch";
+import { filterProducts } from "../../../store/slices/productsSlice";
 
 interface DropdownProps {
   data: IFilter[];
@@ -12,20 +14,23 @@ const Dropdown: FC<DropdownProps> = ({ data }) => {
   const [items] = useState(data);
   const [selectedItem, setSelectedItem] = useState<any>(items[0]);
 
+  const dispatch = useAppDispatch();
+
   const toggleDropdown = () => {
     setOpen((prevState) => !prevState);
   };
 
-  const handleClickOnItem = (id: number) => {
+  const handleClickOnItem = (id: number, text: string) => {
     const selected = items.find((item) => item.id === id);
     setSelectedItem(selected);
+    dispatch(filterProducts(text));
     setOpen((prevState) => !prevState);
   };
 
   return (
     <div className={cn(s.dropdown, isOpen && s.open)}>
       <div className={s.header} onClick={toggleDropdown}>
-        {selectedItem.value}
+        {selectedItem.text}
       </div>
       {isOpen ? (
         <div className={s.body}>
@@ -33,7 +38,7 @@ const Dropdown: FC<DropdownProps> = ({ data }) => {
             <div
               key={item.id}
               className={s.item}
-              onClick={(e) => handleClickOnItem(item.id)}
+              onClick={(e) => handleClickOnItem(item.id, item.text)}
             >
               {item.text}
             </div>

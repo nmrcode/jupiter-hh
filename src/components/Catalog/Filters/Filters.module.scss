@@ -20,6 +20,10 @@
     margin-right: 60px;
   }
 
+  &.active{
+    color: var(--accent)
+  }
+
   &:hover {
     color: var(--accent);
   }
