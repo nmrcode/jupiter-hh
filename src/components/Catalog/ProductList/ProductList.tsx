@@ -12,18 +12,27 @@ import p6 from "../../../static/img/6.png";
 import p7 from "../../../static/img/7.png";
 import p8 from "../../../static/img/8.png";
 import p9 from "../../../static/img/9.png";
-
-const products: IProduct[] = [];
+import { useAppSelector } from "../../../hooks/useAppSelector";
 
 const ProductList: FC = () => {
-  if (!products.length) return null;
+  const filteredProducts = useAppSelector(
+    (state) => state.product.filteredProducts
+  );
+
+  if (!filteredProducts.length) return null;
 
   return (
-    <div className={s.wrapper}>
-      {products.map((product) => (
-        <ProductItem key={product.title} product={product} />
-      ))}
-    </div>
+    <>
+      {filteredProducts.length ? (
+        <div className={s.wrapper}>
+          {filteredProducts.map((product) => (
+            <ProductItem key={product.title} product={product} />
+          ))}
+        </div>
+      ) : (
+        <div className={s.error}>Products not found</div>
+      )}
+    </>
   );
 };
 
