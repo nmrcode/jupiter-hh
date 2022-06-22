@@ -5,11 +5,15 @@ import cn from "classnames";
 interface ButtonProps {
   text: string;
   variant: "dark" | "light";
+  onClick?: () => {};
 }
 
-const Button: FC<ButtonProps> = ({ text, variant }) => {
+const Button: FC<ButtonProps> = ({ text, variant, onClick }) => {
   return (
-    <button className={cn(s.button, variant === "dark" ? s.dark : s.light)}>
+    <button
+      className={cn(s.button, variant === "dark" ? s.dark : s.light)}
+      onClick={onClick}
+    >
       {text}
     </button>
   );
