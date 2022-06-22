@@ -1,0 +1,14 @@
+.nav{
+  display: flex;
+  align-items: center;
+}
+
+.link{
+  font-size: 16px;
+  line-height: 32px;
+  color: var(--font);
+
+  &:not(:last-child){
+    margin-right: 100px;
+  }
+}
