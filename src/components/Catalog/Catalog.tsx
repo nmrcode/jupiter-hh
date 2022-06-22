@@ -13,6 +13,7 @@ import p6 from "../../static/img/6.png";
 import p7 from "../../static/img/7.png";
 import p8 from "../../static/img/8.png";
 import p9 from "../../static/img/9.png";
+import LoadMore from "./LoadMore/LoadMore";
 
 const filterItems = [
   "Show All",
@@ -40,6 +41,7 @@ const Catalog: FC = () => {
       <Container>
         <Filters filterItems={filterItems} />
         <ProductList products={products} />
+        <LoadMore />
       </Container>
     </section>
   );

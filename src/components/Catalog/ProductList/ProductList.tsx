@@ -2,6 +2,7 @@ import { FC } from "react";
 import { IProduct } from "../../../types/product";
 import s from "./ProductList.module.scss";
 import ProductItem from "./ProductItem/ProductItem";
+import Button from "../../Shared/Button/Button";
 
 interface CardListProps {
   products: IProduct[];
