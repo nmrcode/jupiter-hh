@@ -43,9 +43,15 @@
   border-radius: 19px;
 
   margin-bottom: 29px;
+  transition: background-color .2s ease-in-out, color .2s ease-in-out;
 
   @media (max-width: 375px) {
     margin-bottom: 9px;
+  }
+
+  &:hover {
+    color: var(--font);
+    background-color: var(--accent);
   }
 }
 
