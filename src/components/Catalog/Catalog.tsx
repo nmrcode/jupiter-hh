@@ -15,14 +15,6 @@ import p8 from "../../static/img/8.png";
 import p9 from "../../static/img/9.png";
 import LoadMore from "./LoadMore/LoadMore";
 
-const filterItems = [
-  "Show All",
-  "Design",
-  "Branding",
-  "Illustration",
-  "Motion",
-];
-
 const products: IProduct[] = [
   { category: "Design", title: "Sofa", imageUrl: p1 },
   { category: "Branding", title: "KeyBoard", imageUrl: p2 },
@@ -39,7 +31,7 @@ const Catalog: FC = () => {
   return (
     <section className={s.section}>
       <Container>
-        <Filters filterItems={filterItems} />
+        <Filters />
         <ProductList products={products} />
         <LoadMore />
       </Container>

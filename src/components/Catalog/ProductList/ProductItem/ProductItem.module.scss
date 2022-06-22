@@ -16,12 +16,15 @@
 
   @media (max-width: 375px) {
     margin: 0 auto;
-    width: 300px;
+    width: 252px;
   }
 }
 
 .body {
   padding: 48px;
+  @media (max-width: 375px) {
+    padding: 18px;
+  }
 }
 
 .category {
@@ -36,6 +39,10 @@
   border-radius: 19px;
 
   margin-bottom: 29px;
+
+  @media (max-width: 375px) {
+    margin-bottom: 9px;
+  }
 }
 
 .title {

@@ -7,7 +7,7 @@
   font-weight: 900;
   background-color: transparent;
   border-radius: var(--radii);
-  transition: background-color .2s ease-in-out, color .2s ease-in-out;
+  transition: background-color .2s ease-in-out, color .2s ease-in-out, border .2s ease-in-out;
 
   &.dark {
     color: var(--font);
