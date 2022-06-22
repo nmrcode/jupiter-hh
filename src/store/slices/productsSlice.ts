@@ -1,90 +1,20 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import p1 from "../../static/img/1.png";
-import p2 from "../../static/img/2.png";
-import p3 from "../../static/img/3.png";
-import p4 from "../../static/img/4.png";
-import p5 from "../../static/img/5.png";
-import p6 from "../../static/img/6.png";
-import p7 from "../../static/img/7.png";
-import p8 from "../../static/img/8.png";
-import p9 from "../../static/img/9.png";
+import * as _ from "lodash";
 import { IProduct } from "../../types/product";
-import { v4 as uuidv4 } from "uuid";
+import { mockProducts } from "../../mock/products";
 
 type InitialType = {
   products: IProduct[];
   filteredProducts: IProduct[];
   currentFilter: string;
+  showItems: number;
 };
 
 const initialState: InitialType = {
-  products: [
-    {
-      id: uuidv4(),
-      category: "Design",
-      title: "Sofa",
-      imageUrl: p1,
-      active: false,
-    },
-    {
-      id: uuidv4(),
-      category: "Branding",
-      title: "KeyBoard",
-      imageUrl: p2,
-      active: false,
-    },
-    {
-      id: uuidv4(),
-      category: "Illustration",
-      title: "Work Media",
-      imageUrl: p3,
-      active: false,
-    },
-    {
-      id: uuidv4(),
-      category: "Motion",
-      title: "DDDone",
-      imageUrl: p4,
-      active: false,
-    },
-    {
-      id: uuidv4(),
-      category: "Design",
-      title: "Abstract",
-      imageUrl: p5,
-      active: false,
-    },
-    {
-      id: uuidv4(),
-      category: "Branding",
-      title: "HandP",
-      imageUrl: p6,
-      active: false,
-    },
-    {
-      id: uuidv4(),
-      category: "Motion",
-      title: "Architect",
-      imageUrl: p7,
-      active: false,
-    },
-    {
-      id: uuidv4(),
-      category: "Design",
-      title: "CalC",
-      imageUrl: p8,
-      active: false,
-    },
-    {
-      id: uuidv4(),
-      category: "Branding",
-      title: "Sport",
-      imageUrl: p9,
-      active: false,
-    },
-  ],
+  products: mockProducts,
   filteredProducts: [],
   currentFilter: "Show All",
+  showItems: 9,
 };
 
 export const productsSlice = createSlice({
@@ -103,17 +33,39 @@ export const productsSlice = createSlice({
     },
 
     toggleActive(state, action: PayloadAction<string>) {
-      const currentFile = state.filteredProducts.filter(
+      const currentFileInOriginal = state.products.filter(
         (product) => product.id === action.payload
       );
 
-      if (currentFile) {
-        currentFile[0].active = !currentFile[0].active;
+      const currentFileInFiltered = state.filteredProducts.filter(
+        (product) => product.id === action.payload
+      );
+
+      if (currentFileInOriginal && currentFileInFiltered) {
+        currentFileInOriginal[0].active = !currentFileInOriginal[0].active;
+        currentFileInFiltered[0].active = !currentFileInFiltered[0].active;
       }
+    },
+
+    deleteProducts(state) {
+      const selectedArray = state.filteredProducts.filter(
+        (product) => product.active === true
+      );
+
+      state.products = _.without(state.filteredProducts, ...selectedArray);
+      state.filteredProducts = _.without(
+        state.filteredProducts,
+        ...selectedArray
+      );
+    },
+
+    loadMore(state, action: PayloadAction<number>) {
+      state.showItems += action.payload;
     },
   },
 });
 
-export const { filterProducts, toggleActive } = productsSlice.actions;
+export const { filterProducts, toggleActive, deleteProducts, loadMore } =
+  productsSlice.actions;
 
 export default productsSlice;

@@ -14,24 +14,18 @@ import p8 from "../../../static/img/8.png";
 import p9 from "../../../static/img/9.png";
 import { useAppSelector } from "../../../hooks/useAppSelector";
 
-const ProductList: FC = () => {
-  const filteredProducts = useAppSelector(
-    (state) => state.product.filteredProducts
-  );
+interface ProductsListProps {
+  products: IProduct[];
+}
 
-  if (!filteredProducts.length) return null;
-
+const ProductList: FC<ProductsListProps> = ({ products }) => {
   return (
     <>
-      {filteredProducts.length ? (
-        <div className={s.wrapper}>
-          {filteredProducts.map((product) => (
-            <ProductItem key={product.title} product={product} />
-          ))}
-        </div>
-      ) : (
-        <div className={s.error}>Products not found</div>
-      )}
+      <div className={s.wrapper}>
+        {products.map((product) => (
+          <ProductItem key={product.title} product={product} />
+        ))}
+      </div>
     </>
   );
 };

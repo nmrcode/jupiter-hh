@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import s from "./ProductItem.module.scss";
 import { IProduct } from "../../../../types/product";
 import { useAppDispatch } from "../../../../hooks/useAppDispatch";

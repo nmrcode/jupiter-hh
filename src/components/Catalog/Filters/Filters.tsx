@@ -4,7 +4,10 @@ import useMediaQuery from "../../../hooks/useMediaQuery";
 import Dropdown from "../../Shared/Dropdown/Dropdown";
 import { IFilter } from "../../../types/filter";
 import { useAppDispatch } from "../../../hooks/useAppDispatch";
-import { filterProducts } from "../../../store/slices/productsSlice";
+import {
+  deleteProducts,
+  filterProducts,
+} from "../../../store/slices/productsSlice";
 import { useAppSelector } from "../../../hooks/useAppSelector";
 import cn from "classnames";
 
