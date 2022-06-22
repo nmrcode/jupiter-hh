@@ -3,8 +3,8 @@ import logo from "../../static/img/logo.svg";
 import s from "./Header.module.scss";
 import Navigation from "./Navigation/Navigation";
 import { IMenuItem } from "../../types/menu";
-import Button from "../Button/Button";
-import Container from "../Container/Container";
+import Button from "../Shared/Button/Button";
+import Container from "../Shared/Container/Container";
 
 const Header: FC = () => {
   const menuItems: IMenuItem[] = [
