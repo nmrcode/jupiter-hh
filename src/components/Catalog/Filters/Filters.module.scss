@@ -1,0 +1,20 @@
+.wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0;
+}
+
+.button{
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 16px;
+  line-height: 32px;
+  color: var(--secondaryFont);
+
+  &:not(:last-child){
+    margin-right: 60px;
+  }
+}
